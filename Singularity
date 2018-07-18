@@ -1,2 +1,2 @@
-BootStrap: docker
+BootStrap:docker
 From: laletscaria/eddy:latest
