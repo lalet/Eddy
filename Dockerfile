@@ -1,4 +1,4 @@
-FROM nvidia/cuda:7.5-runtime-centos7
+FROM nvidia/cuda:8.0-runtime-centos7
 
 ENV FSLDIR /usr/local/fsl
 
@@ -10,13 +10,13 @@ RUN curl -O https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py && \
 
 RUN rm -rf fslinstaller.py
 
-RUN curl -O https://fsl.fmrib.ox.ac.uk/fsldownloads/patches/eddy-patch-fsl-5.0.11/centos6/eddy_cuda7.5 && \
-        chmod 755 eddy_cuda7.5 && \
-        mv eddy_cuda7.5 ${FSLDIR}/bin && \
-        mv ${FSLDIR}/bin/eddy_cuda ${FSLDIR}/bin/eddy_cuda7.5
+RUN curl -O https://fsl.fmrib.ox.ac.uk/fsldownloads/patches/eddy-patch-fsl-5.0.11/centos6/eddy_cuda8.0 && \
+        chmod 755 eddy_cuda8.0 && \
+        mv eddy_cuda8.0 ${FSLDIR}/bin && \
+        mv ${FSLDIR}/bin/eddy_cuda ${FSLDIR}/bin/eddy_cuda8.0
 
 ENV PATH "${PATH}:${FSLDIR}/bin"
 RUN . ${FSLDIR}/etc/fslconf/fsl.sh
 
-ENV PATH /usr/local/cuda/bin:${PATH}
-ENV LD_LIBRARY_PATH /usr/local/cuda/lib64:${LD_LIBRARY_PATH}
+#ENV PATH /usr/local/cuda/bin:${PATH}
+#ENV LD_LIBRARY_PATH /usr/local/cuda/lib64:${LD_LIBRARY_PATH}
