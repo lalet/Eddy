@@ -5,7 +5,7 @@ ENV FSLDIR /usr/local/fsl
 RUN yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 RUN yum -y install dkms
 RUN yum install -y wget file gcc libpng12 libmng bzip2 sudo perl
-RUN sudo yum -y install cuda-toolkit-9-2 \
+RUN sudo yum -y install cuda-toolkit-7-5 \
     xorg-x11-drv-nvidia-libs nvidia-kmod
 #COPY fslinstaller.py /tmp/
 RUN curl -O https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py && \
