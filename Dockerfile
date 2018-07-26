@@ -16,8 +16,8 @@ RUN rm -rf fslinstaller.py
 
 RUN curl -O https://fsl.fmrib.ox.ac.uk/fsldownloads/patches/eddy-patch-fsl-5.0.11/centos6/eddy_cuda8.0 && \
         chmod 755 eddy_cuda8.0 && \
-        mv eddy_cuda8.0 ${FSLDIR}/bin && \
-        mv ${FSLDIR}/bin/eddy_cuda ${FSLDIR}/bin/eddy_cuda8.0
+        mv eddy_cuda8.0 ${FSLDIR}/bin
+        #mv ${FSLDIR}/bin/eddy_cuda ${FSLDIR}/bin/eddy_cuda8.0
 
 ENV PATH "${PATH}:${FSLDIR}/bin"
 RUN . ${FSLDIR}/etc/fslconf/fsl.sh
