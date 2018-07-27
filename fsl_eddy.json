@@ -1,0 +1,138 @@
+{
+    "tool-version": "5.0.11", 
+    "name": "fsl_eddy", 
+    "command-line": "eddy_cuda8.0 [MAIN_DATA] [MASK] [INDEX] [ACQP] [BVECS] [BVELS] [FWHM] [TOPUP] [FLM] [DATA_SHELL] [VERBOSE] [OUTPUT_DIR]", 
+    "container-image": {
+        "type": "singularity",
+        "image": "laletscaria/eddy:latest",
+        "index": "docker://"
+    },
+    "inputs": [
+        {
+            "command-line-flag": "--imain", 
+            "description": "File containing all the images to estimate distortions for.", 
+            "value-key": "[MAIN_DATA]", 
+            "type": "File", 
+            "optional": false, 
+            "id": "main_data", 
+            "name": "Main data file"
+        }, 
+        {
+            "command-line-flag": "--mask", 
+            "description": "Mask to indicate brain.", 
+            "value-key": "[MASK]", 
+            "type": "File", 
+            "optional": false, 
+            "id": "mask", 
+            "name": "Mask data file"
+        }, 
+        {
+            "command-line-flag": "--index", 
+            "description": "File containing indices for all volumes in --imain into --acqp and --topup.", 
+            "value-key": "[INDEX]", 
+            "optional": false, 
+            "type": "String", 
+            "id": "index", 
+            "name": "Index file"
+        }, 
+        {
+            "command-line-flag": "--acqp", 
+            "description": "File containing acquisition parameters.", 
+            "value-key": "[ACQP]", 
+            "type": "String", 
+            "optional": false, 
+            "id": "acqp", 
+            "name": "Acquisition parameter"
+        }, 
+        {
+            "command-line-flag": "--bvecs", 
+            "description": "File containing the b-vectors for all volumes in --imain.", 
+            "value-key": "[BVECS]", 
+            "type": "String", 
+            "optional": false, 
+            "id": "bvecs", 
+            "name": "B vectors for all volumes"
+        }, 
+        {
+            "command-line-flag": "--bvels", 
+            "description": "File containing the b-values for all volumes in --imain", 
+            "value-key": "[BVELS]", 
+            "type": "String", 
+            "optional": false, 
+            "id": "bvels", 
+            "name": "B values for all volumes"
+        },
+        {
+            "command-line-flag": "--fwhm", 
+            "description": "FWHM for conditioning filter when estimating the parameters", 
+            "value-key": "[FWHM]", 
+            "type": "Number", 
+            "optional": true, 
+            "id": "fwhm", 
+            "default-value": 0,
+            "name": "FWHM"
+        },
+        {
+            "command-line-flag": "--topup", 
+            "description": "Base name for output files from topup.", 
+            "value-key": "[TOPUP]", 
+            "optional": true, 
+            "type": "String", 
+            "id": "topup", 
+            "name": "Topup"
+        },
+        {
+            "command-line-flag": "--flm", 
+            "description": "First level EC model (movement/linear/quadratic/cubic, default quadratic).", 
+            "value-key": "[FLM]", 
+            "type": "String", 
+            "list": true, 
+            "value-choices": ["movement", "linear", "quadratic", "cubic"],
+            "default-value": "quadratic",
+            "optional": true, 
+            "id": "flm", 
+            "name": "FLM"
+        },
+        {
+            "command-line-flag": "--out", 
+            "description": "The basename of the output files.", 
+            "value-key": "[OUTPUT_DIR]", 
+            "type": "File", 
+            "optional": false, 
+            "id": "output_dir_name", 
+            "name": "Output directory name"
+        }, 
+        {
+            "command-line-flag": "-v", 
+            "description": "Verbose mode", 
+            "value-key": "[VERBOSE]", 
+            "type": "Flag", 
+            "list": false, 
+            "optional": true, 
+            "id": "verbose", 
+            "name": "Verbose"
+        },
+        {
+            "command-line-flag": "--data_is_shelled",▫
+            "description": "Assume, don't check, that data is shelled",▫
+            "value-key": "[DATA_SHELL]",▫
+            "type": "Flag",▫
+            "list": false,▫
+            "optional": true,▫
+            "id": "data_shell",▫
+            "name": "Data is shelled"
+        }
+
+    ],
+    "schema-version": "0.5",
+    "output-files": [
+        {
+            "description": "Output files from FSL EDDY",
+            "id": "output_dir",
+            "optional": false,
+            "path-template": "[OUTPUT_DIR]",
+            "name": "Output Directory"
+        }
+    ],
+    "description": "EDDY --  a tool for correcting eddy currents and movements in diffusion data."
+}
