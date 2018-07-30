@@ -66,7 +66,7 @@ done
 
 echo "${FSLDIR}"
 source ${FSLDIR}/etc/fslconf/fsl.sh
-export PATH=/home/shawn.mcin/apps/cuda8.0/bin:/home/shawn.mcin/eddy/host_files/bin:$PATH
+export PATH=/home/shawn.mcin/apps/cuda8.0/bin:/home/shawn.mcin/eddy/host_files/bin:${FSLDIR}/bin:$PATH
 export LD_LIBRARY_PATH=/home/shawn.mcin/apps/cuda8.0/lib64:/home/shawn.mcin/eddy/host_files/lib64:$LD_LIBRARY_PATH
 #echo COMMAND_LINE = "${COMMAND_LINE}"
 eddy_cuda8.0 ${COMMAND_LINE}
