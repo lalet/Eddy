@@ -22,5 +22,6 @@ RUN curl -O https://fsl.fmrib.ox.ac.uk/fsldownloads/patches/eddy-patch-fsl-5.0.1
 ENV PATH "${PATH}:${FSLDIR}/bin"
 RUN . ${FSLDIR}/etc/fslconf/fsl.sh
 
+COPY eddy_wrapper.sh /bin
 #ENV PATH /usr/local/cuda/bin:${PATH}
 #ENV LD_LIBRARY_PATH /usr/local/cuda/lib64:${LD_LIBRARY_PATH}
