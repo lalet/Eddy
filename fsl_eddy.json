@@ -1,7 +1,7 @@
 {
     "tool-version": "5.0.11", 
     "name": "fsl_eddy", 
-    "command-line": "eddy_cuda8.0 [MAIN_DATA] [MASK] [INDEX] [ACQP] [BVECS] [BVELS] [FWHM] [TOPUP] [FLM] [DATA_SHELL] [VERBOSE] [OUTPUT_DIR]", 
+    "command-line": "eddy_cuda8.0 [MAIN_DATA] [MASK] [INDEX] [ACQP] [BVECS] [BVALS] [FWHM] [TOPUP] [FLM] [DATA_SHELL] [VERBOSE] [OUTPUT_DIR]", 
     "container-image": {
         "type": "singularity",
         "image": "laletscaria/eddy:latest",
@@ -54,9 +54,9 @@
             "name": "B vectors for all volumes"
         }, 
         {
-            "command-line-flag": "--bvels", 
+            "command-line-flag": "--bvals", 
             "description": "File containing the b-values for all volumes in --imain", 
-            "value-key": "[BVELS]", 
+            "value-key": "[BVALS]", 
             "type": "String", 
             "optional": false, 
             "id": "bvels", 
@@ -86,7 +86,7 @@
             "description": "First level EC model (movement/linear/quadratic/cubic, default quadratic).", 
             "value-key": "[FLM]", 
             "type": "String", 
-            "list": true, 
+            "list": false, 
             "value-choices": ["movement", "linear", "quadratic", "cubic"],
             "default-value": "quadratic",
             "optional": true, 
@@ -113,13 +113,13 @@
             "name": "Verbose"
         },
         {
-            "command-line-flag": "--data_is_shelled",▫
-            "description": "Assume, don't check, that data is shelled",▫
-            "value-key": "[DATA_SHELL]",▫
-            "type": "Flag",▫
-            "list": false,▫
-            "optional": true,▫
-            "id": "data_shell",▫
+            "command-line-flag": "--data_is_shelled",
+            "description": "Assume, don't check, that data is shelled",
+            "value-key": "[DATA_SHELL]",
+            "type": "Flag",
+            "list": false,
+            "optional": true,
+            "id": "data_shell",
             "name": "Data is shelled"
         }
 
