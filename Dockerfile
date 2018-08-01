@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.0-devel-centos7
+FROM nvidia/cuda:8.0-runtime-centos7
 
 ENV FSLDIR /usr/local/fsl
 
