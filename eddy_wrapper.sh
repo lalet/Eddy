@@ -7,7 +7,7 @@ for i in "$@"
 do
 case $i in
     --imain)
-    COMMAND_LINE="--imain $2"
+    COMMAND_LINE="--imain="$2""
     shift # past argument
     shift
     ;;
